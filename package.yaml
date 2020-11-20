@@ -1,49 +1,48 @@
-name:                Quami
-version:             0.1.0.0
-github:              "githubuser/Quami"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2020 Author name here"
-
-extra-source-files:
-- README.md
-- ChangeLog.md
-
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
-
-# To avoid duplicated efforts in documentation and dealing with the
-# complications of embedding Haddock markup inside cabal files, it is
-# common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/Quami#readme>
+name: quami
+version: 0.1.0.0
+github: "lukasberglund/quami"
+license: BSD3
+author: "John Maar, Lukas Berglund"
+maintainer: "lukas.t.berglund@gmail.com"
+copyright: "2020 Maar, Berglund"
 
 dependencies:
-- base >= 4.7 && < 5
+- base >= 4.8 && < 5
+- containers
 - matrix
+
+ghc-options:
+  - -Wall
+  - -Werror
+  - -dcore-lint
+  - -fno-warn-incomplete-patterns
+  - -fwarn-unused-imports
+  - -optP-Wno-nonportable-include-path
 
 library:
   source-dirs: src
 
 executables:
-  Quami-exe:
-    main:                Main.hs
-    source-dirs:         app
+  quami-exe:
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - Quami
+      - quami
 
 tests:
-  Quami-test:
-    main:                Spec.hs
-    source-dirs:         test
+  quami-test:
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - Quami
+      - quami
+      - hspec
+      # - process
+      - text
